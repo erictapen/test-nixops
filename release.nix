@@ -1,4 +1,4 @@
-{ nixops, nixpkgs }:
+{ nixops ? <nixops> , nixpkgs ? <nixpkgs> }:
 
 let
   lib = import "${nixpkgs}/lib";
