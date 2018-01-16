@@ -4,12 +4,14 @@
   node1 = { config, pkgs, ... }:
   {
     deployment = {
-      targetEnv = "virtualbox";
-      virtualbox = {
-        memorySize = 512;
-        vcpu = 1;
-        headless = true;
-      };
+      targetEnv = "None";
+    };
+
+    boot.loader.grub.device = "/dev/sda";
+
+    fileSystems."/" = {
+      device = "dev/sda1";
+      fsType = "ext4";
     };
 
     environment.systemPackages = with pkgs; [ hello ];
@@ -19,12 +21,14 @@
   node2 = { config, pkgs, ... }:
   {
     deployment = {
-      targetEnv = "virtualbox";
-      virtualbox = {
-        memorySize = 512;
-        vcpu = 1;
-        headless = true;
-      };
+      targetEnv = "None";
+    };
+
+    boot.loader.grub.device = "/dev/sda";
+
+    fileSystems."/" = {
+      device = "dev/sda1";
+      fsType = "ext4";
     };
 
     nixpkgs.config.allowUnfree = true;
